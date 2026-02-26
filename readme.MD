@@ -204,13 +204,14 @@ Example use case:
 `kubectl get ns` OR `kubectl get namespaces`
 
 Example output:
-
+```ini
 NAME              STATUS   AGE
 default           Active   9m22s
 expense           Active   10s
 kube-node-lease   Active   9m21s
 kube-public       Active   9m22s
 kube-system       Active   9m22s
+```
 
 Explanation of Default Namespaces:
 | Namespace | Purpose|
