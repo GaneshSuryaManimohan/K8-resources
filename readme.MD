@@ -116,3 +116,109 @@ Instead of hardcoding the version in production environments:
 Example: If your EKS cluster runs: 1.34
 
 Recommended kubectl: 1.34.x or 1.35.x
+
+---
+
+# Creating and Managing an EKS Cluster with eksctl and kubectl
+
+This section explains the commands used to:
+
+1. Create an EKS cluster
+2. Verify worker nodes
+3. Create and manage namespaces
+4. Delete a namespace
+
+---
+
+#### 1️⃣ Create EKS Cluster
+
+`eksctl create cluster --config-file=eks.yaml` :
+
+* **What this does:**
+
+1. Uses eksctl to create an Amazon EKS cluster
+
+2. Reads configuration from eks.yaml
+
+3. Automatically provisions:
+    - VPC (if not specified)
+    - Subnets
+    - Security Groups
+    - Node Groups (EC2 worker nodes)
+    - IAM roles
+    - EKS control plane
+
+**Important:** Cluster creation may take 10–20 minutes depending on node size and region.
+
+---
+
+#### 2️⃣ Verify Worker Nodes
+
+`kubectl get nodes` :
+
+* **Purpose:**
+
+Lists all worker nodes registered with the cluster.
+
+Example output:
+
+NAME                           STATUS   ROLES    AGE   VERSION
+ip-192-168-xx-xx.ec2.internal  Ready    <none>   2m    v1.35.0
+
+* **Key Field:**
+
+    - `Ready` → Node is healthy and ready to accept pods. If nodes are not `Ready`, workloads cannot be scheduled.
+
+* **Working with Namespaces:**
+
+Namespaces logically isolate resources inside a Kubernetes cluster.
+
+---
+
+#### 3️⃣ Create a Namespace
+
+`kubectl create namespace expense`
+
+Output: `namespace/expense created`
+
+* **What this does:**
+
+1. Creates a new namespace named expense
+
+2. Allows logical separation of applications
+
+3. Useful for multi-project or multi-environment setups
+
+Example use case:
+
+1. default → System or testing
+
+2. expense → Expense tracking application
+
+3. dev, qa, prod → Environment separation
+
+---
+
+#### 4️⃣ List All Namespaces
+
+`kubectl get ns` OR `kubectl get namespaces`
+
+Example output:
+
+NAME              STATUS   AGE
+default           Active   9m22s
+expense           Active   10s
+kube-node-lease   Active   9m21s
+kube-public       Active   9m22s
+kube-system       Active   9m22s
+
+Explanation of Default Namespaces:
+| Namespace | Purpose|
+|------|----------|
+| default | Default namespace for resources |
+| kube-system |	Kubernetes system components |
+| kube-public |	Public cluster information |
+| kube-node-lease |	Node heartbeat management |
+| expense |	Custom namespace you created |
+
+STATUS: Active means the namespace is available for use.
