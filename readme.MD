@@ -32,7 +32,7 @@
 
 * **Explanation:**
 
-1. chmod +x → Adds execute permission
+1. `chmod +x` → Adds execute permission
 
 2. Required because downloaded files are not executable by default
 
@@ -44,13 +44,13 @@
 
 * **Breakdown:**
 
-1. mkdir -p $HOME/bin
+1. `mkdir -p $HOME/bin`
     - Creates a personal bin directory if it doesn’t exist
 
-2. cp ./kubectl $HOME/bin/kubectl
+2. `cp ./kubectl $HOME/bin/kubectl`
     - Copies the binary into your local bin folder
 
-3. export PATH=$HOME/bin:$PATH
+3. `export PATH=$HOME/bin:$PATH`
     - Temporarily updates your PATH so the system can find kubectl
 
 **⚠️ Note:**
@@ -64,7 +64,7 @@ This PATH change is temporary. To make it permanent, add the following to `~/.ba
 
 * **Explanation:**
 
-1. Moves kubectl into /usr/local/bin
+1. Moves kubectl into `/usr/local/bin`
 
 2. Makes it available globally for all users
 
@@ -72,12 +72,12 @@ This PATH change is temporary. To make it permanent, add the following to `~/.ba
 
 **⚠️ Important:**
 
-If you already copied it to $HOME/bin, this step is optional.
+If you already copied it to `$HOME/bin`, this step is optional.
 Choose either:
 
-1. User-level install ($HOME/bin)
+1. User-level install `($HOME/bin)`
 
-2. System-wide install (/usr/local/bin)
+2. System-wide install `(/usr/local/bin)`
 
 **Doing both is redundant.**
 
