@@ -214,7 +214,7 @@ kube-public       Active   9m22s
 kube-system       Active   9m22s
 ```
 
-Explanation of Default Namespaces:
+**Explanation of Default Namespaces:**
 | Namespace | Purpose|
 |------|----------|
 | default | Default namespace for resources |
@@ -223,4 +223,192 @@ Explanation of Default Namespaces:
 | kube-node-lease |	Node heartbeat management |
 | expense |	Custom namespace you created |
 
-STATUS: Active means the namespace is available for use.
+**STATUS**: Active means the namespace is available for use.
+
+---
+
+#### 5️⃣ Delete a Namespace:
+
+`kubectl delete ns expense` :
+
+Output: namespace "expense" deleted
+
+* **What this does:**
+
+1. Deletes the expense namespace
+
+2. Automatically deletes all resources inside it:
+    - Pods
+    - Deployments
+    - Services
+    - ConfigMaps
+    - Secrets
+
+**⚠️ Important:**
+Namespace deletion is destructive. All contained resources are removed permanently.
+
+---
+
+#### 6️⃣ Apply a Kubernetes Manifest
+
+`kubectl apply -f 01-namespace.yaml`
+
+**What this does:**
+
+1. Applies the configuration defined in 01-namespace.yaml
+
+2. Creates or updates Kubernetes resources defined in the file
+
+3. Follows declarative configuration model
+
+If the file contains:
+- Namespace
+- Pod
+- Deployment
+- Service
+
+They will be created (or updated if they already exist).
+
+---
+
+#### 7️⃣ Describe a Namespace
+
+`kubectl describe ns expense`
+
+**Purpose:**
+
+Displays detailed information about the expense namespace:
+
+- Labels
+- Annotations
+- Resource quotas (if any)
+- Events
+- Status
+Useful for troubleshooting namespace-related issues.
+
+---
+
+#### 8️⃣ Describe a Pod in a Specific Namespace
+`kubectl describe pod nginx -n expense`
+
+**What this shows:**
+
+- Pod status
+- Node where it is running
+- Container details
+- Image used
+- Resource limits
+- Events (CrashLoopBackOff, scheduling issues, etc.)
+
+This command is essential for debugging pod failures.
+
+---
+
+#### 9️⃣ List Pods in a Namespace
+
+`kubectl get pods -n expense`
+
+Example output:
+
+```ini
+NAME    READY   STATUS    RESTARTS   AGE
+nginx   1/1     Running   0          12m
+```
+
+Explanation of Columns:
+
+| Column	| Meaning |
+|------|----------|
+| READY	| Containers ready / total containers |
+| STATUS |	Pod state (Running, Pending, CrashLoopBackOff) |
+| RESTARTS | Container restart count |
+| AGE |	Time since pod creation |
+
+* **Multi-Container Pod Example:**
+
+Later output:
+
+```ini
+NAME    READY   STATUS    RESTARTS   AGE
+nginx   2/2     Running   0          8s
+```
+
+This indicates:
+1. The pod has 2 containers
+
+2. Both containers are healthy and running
+
+Pods can contain multiple containers sharing:
+
+1. Network
+
+2. Storage volumes
+
+3. Lifecycle
+
+---
+
+#### 🔟 Execute into a Specific Container
+
+`kubectl exec -it nginx -n expense -c alma -- bash`
+
+**Breakdown:**
+- exec → Run a command inside a container
+
+- -it → Interactive terminal
+
+- nginx → Pod name
+
+- -n expense → Namespace
+
+- -c alma → Target container inside the pod
+
+- -- bash → Shell to execute
+
+**Why -c is required?**
+
+When a pod has multiple containers, Kubernetes needs to know which container to access.
+
+If omitted, it defaults to the first container.
+
+---
+
+#### Delete the EKS Cluster
+
+`eksctl delete cluster --config-file=eks.yaml` :
+
+**What this does:**
+
+1. Deletes the entire EKS cluster defined in eks.yaml
+
+2. Removes:
+    - Control plane
+    - Node groups
+    - Associated CloudFormation stacks
+    - Load balancers
+    - Security groups (if created by eksctl)
+
+**⚠️ Important:**
+
+This permanently deletes the cluster and all workloads inside it.
+
+Always verify before executing in production environments.
+
+---
+
+#### Interview Insight
+
+* Why use namespaces?
+1. Resource isolation
+2. Multi-team cluster usage
+3. Environment separation
+4. Resource quotas and RBAC control
+
+* Why use multi-container pods?
+Common patterns:
+
+1. Sidecar container (logging/monitoring)
+2. Ambassador container (proxy)
+3. Adapter container (data transformation)
+
+Pods are the smallest deployable unit in Kubernetes.
