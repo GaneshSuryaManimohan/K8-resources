@@ -204,6 +204,7 @@ Example use case:
 `kubectl get ns` OR `kubectl get namespaces`
 
 Example output:
+
 ```ini
 NAME              STATUS   AGE
 default           Active   9m22s
