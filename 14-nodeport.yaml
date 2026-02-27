@@ -1,12 +1,13 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: nginx-service
+  name: nginx-nodeport
 spec:
   selector:
     app: nginx
     component: web
     environment: dev
+    type: NodePort
   # Define the type of service (ClusterIP, NodePort, LoadBalancer)
   # if type is not specified, it defaults to ClusterIP
   ports:
