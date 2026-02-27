@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap-demo
+data:
+  course: "DevOps with AWS and Kubernetes"
+  description: "This configmap is used to demonstrate how to use configmaps in Kubernetes."
+  owner: "Surya Manimohan"
+  github: "https://github.com/GaneshSuryaManimohan/K8-resources"
