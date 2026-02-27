@@ -1,0 +1,13 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: annotations-demo
+  labels:
+    course: kubernetes
+  annotations:
+    description: "This pod is used to demonstrate annotations in Kubernetes."
+    owner: "Surya Manimohan"
+  spec:
+    containers:
+      - name: almalinux
+        image: almalinux:9
