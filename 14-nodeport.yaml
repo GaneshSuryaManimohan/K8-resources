@@ -7,9 +7,7 @@ spec:
     app: nginx
     component: web
     environment: dev
-    type: NodePort
-  # Define the type of service (ClusterIP, NodePort, LoadBalancer)
-  # if type is not specified, it defaults to ClusterIP
+    type: NodePort # Define the type of service (ClusterIP, NodePort, LoadBalancer)
   ports:
     - protocol: TCP
       port: 80
