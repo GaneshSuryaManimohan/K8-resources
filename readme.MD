@@ -411,4 +411,20 @@ Common patterns:
 2. Ambassador container (proxy)
 3. Adapter container (data transformation)
 
-Pods are the smallest deployable unit in Kubernetes.
+**Pods are the smallest deployable unit in Kubernetes.**
+
+---
+
+**ClusterIP is the default Kubernetes service type that exposes an application internally within the cluster. It is reachable by pods and internal cluster components but not from external clients.**
+
+🎯 Quick Comparison of Service Types
+
+There are 3 service types in kubernetes:
+
+| Service Type	| Accessible From |
+|------|----------|
+| ClusterIP	| Inside cluster only |
+| NodePort	| External via node IP + port |
+| LoadBalancer | External via cloud load balancer |
+
+In Amazon EKS, LoadBalancer creates an AWS ELB automatically.
