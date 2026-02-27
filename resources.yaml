@@ -1,0 +1,18 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: resources
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      resources:
+        # soft limits, the container is guaranteed to get at least these resources
+        requests:
+          memory: "128Mi"
+          cpu: "100m"
+        # hard limits, if the container exceeds these limits, it may be terminated
+        # limits should be greater than or equal to requests
+        limits:
+          memory: "256Mi"
+          cpu: "100m"
