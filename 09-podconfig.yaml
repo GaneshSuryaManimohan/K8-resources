@@ -6,19 +6,23 @@ spec:
   containers:
     - name: nginx
       image: nginx
-      env:
-        - name: course
-          valueFrom:
-            configMapKeyRef:
-              name: configmap-demo
-              key: course
-        - name: description
-          valueFrom:
-            configMapKeyRef:
-              name: configmap-demo
-              key: description
-        - name: owner
-          valueFrom:
-            configMapKeyRef:
-              name: configmap-demo
-              key: owner
+      envFrom:
+        - configMapRef:
+            name: configmap-demo
+      # Alternatively, you can specify individual environment variables from the configmap like this:
+      # env:
+      #   - name: course
+      #     valueFrom:
+      #       configMapKeyRef:
+      #         name: configmap-demo
+      #         key: course
+      #   - name: description
+      #     valueFrom:
+      #       configMapKeyRef:
+      #         name: configmap-demo
+      #         key: description
+      #   - name: owner
+      #     valueFrom:
+      #       configMapKeyRef:
+      #         name: configmap-demo
+      #         key: owner
