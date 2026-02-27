@@ -12,4 +12,4 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
-      nodePort: 30080 # This is the port that will be exposed on each node. You can choose any port in the range 30000-32767
+      nodePort: 30100 # This is the port that will be exposed on each node. You can choose any port in the range 30000-32767
