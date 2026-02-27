@@ -2,10 +2,10 @@ kind: Pod
 apiVersion: v1
 metadata:
   name: nginx
-labels:
-  app: nginx
-  component: web
-  environment: dev
+  labels:
+    app: nginx
+    component: web
+    environment: dev
 spec:
   containers:
     - name: nginx
