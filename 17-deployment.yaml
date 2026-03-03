@@ -2,20 +2,27 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-deployment
+  # these are deployment level labels, they are not used for selecting pods, but can be useful for organizing and managing deployments
   labels:
     app: nginx
+    purpose: deployment-demo
+    tier: frontend
 spec:
   replicas: 3
   selector:
     matchLabels:
       app: nginx
+      tier: frontend
+  # the template section defines the pod template that will be used to create pods for this deployment
   template:
     metadata:
       labels:
         app: nginx
+        tier: frontend
+        project: test
     spec:
       containers:
         - name: nginx
-          image: nginx:stable-trixie-perl
+          image: nginx:mainline-trixie-perl
           ports: 
             - containerPort: 80
