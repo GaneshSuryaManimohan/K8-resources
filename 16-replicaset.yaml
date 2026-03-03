@@ -26,4 +26,8 @@ spec:
           image: nginx:1-debian13-dev
           ports:
             - containerPort: 80
+# ReplicaSet will ensure that there are always 3 replicas of the nginx pod running. If any of the pods fail or are deleted, the ReplicaSet will automatically create new pods to maintain the desired number of replicas.
+
+# But the disadvantage of using a ReplicaSet directly is that it does not provide features like rolling updates, rollbacks, or scaling. For these features, you would typically use a Deployment, which manages ReplicaSets under the hood.
+
 
