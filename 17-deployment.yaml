@@ -23,6 +23,6 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: nginx:mainline-trixie-perl
+          image: nginx:stable-perl
           ports: 
             - containerPort: 80
