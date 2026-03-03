@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: nginx:1.29-debian13-dev
+          image: nginx:trixie-perl
           ports: 
             - containerPort: 80
