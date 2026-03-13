@@ -4,7 +4,7 @@ metadata:
   name: ebs-dynamic
 spec:
   storageClassName: expense-ebs-sc # Reference the custom StorageClass
-  volumeName: ebs-dynamic # This is optional. If not specified, Kubernetes will automatically bind to an available PersistentVolume that matches the claim's requirements.
+  # volumeName: ebs-dynamic # This is optional. If not specified, Kubernetes will automatically bind to an available PersistentVolume that matches the claim's requirements.
   accessModes:
     - ReadWriteOnce
   resources:
