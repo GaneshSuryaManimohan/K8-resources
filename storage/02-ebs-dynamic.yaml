@@ -1,3 +1,8 @@
+# Create a StorageClass for EBS volumes with the following specifications:
+# Name: expense-ebs-sc
+# Reclaim Policy: Retain (This means that when a PersistentVolumeClaim is deleted, the underlying PersistentVolume will not be deleted and will need to be manually cleaned up.)
+# Provisioner: ebs.csi.aws.com (This is the CSI driver for AWS EBS volumes.)
+# Volume Binding Mode: WaitForFirstConsumer (This means that the PersistentVolume will not be provisioned until a PersistentVolumeClaim is created and a Pod that uses the claim is scheduled. This allows for better scheduling decisions based on the availability of the underlying storage.)
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
