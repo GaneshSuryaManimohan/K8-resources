@@ -29,3 +29,18 @@ spec:
     - name: persistent-storage
       persistentVolumeClaim:
         claimName: efs-dynamic-claim
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: efs-dynamic-lb
+spec:
+  type: LoadBalancer
+  selector:
+    purpose: efs-dynamic-content
+    app: nginx
+    project: expense
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
