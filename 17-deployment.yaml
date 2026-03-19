@@ -20,6 +20,7 @@ spec:
       labels:
         app: nginx
         tier: frontend
+        purpose: deployment-demo
         extra-key: extra-value
     spec:
       containers:
