@@ -20,7 +20,7 @@ spec:
       labels:
         app: nginx
         tier: frontend
-        project: test
+        extra-key: extra-value
     spec:
       containers:
         - name: nginx
