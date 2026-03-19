@@ -36,7 +36,7 @@ spec:
   selector:
     app: nginx
     tier: frontend
-    project: test
+    purpose: deployment-demo
   ports:
     - protocol: TCP
       port: 80
