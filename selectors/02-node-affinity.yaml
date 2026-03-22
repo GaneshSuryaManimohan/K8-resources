@@ -23,4 +23,5 @@ spec:
     
 
 # A pod can be scheduled on a tainted node if it matches node affinity/selector and has the required toleration for the node’s taints.
+# OR
 # Taints don’t affect affinity, but pods must tolerate taints after matching affinity.
