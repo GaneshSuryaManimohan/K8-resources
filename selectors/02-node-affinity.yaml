@@ -11,7 +11,7 @@ spec:
           - key: project
             operator: In
             values:
-            - test
+            - expense
   containers:
   - name: with-node-affinity
     image: nginx:stable-perl
