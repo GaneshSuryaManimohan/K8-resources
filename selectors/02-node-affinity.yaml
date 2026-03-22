@@ -12,14 +12,14 @@ spec:
             operator: In
             values:
             - test
-    containers:
-    - name: with-node-affinity
-      image: nginx:stable-perl
-    tolerations:
-    - key: "project"
-      operator: "Equal"
-      value: "expense"
-      effect: "NoSchedule"
+  containers:
+   - name: with-node-affinity
+     image: nginx:stable-perl
+  tolerations:
+   - key: "project"
+     operator: "Equal"
+     value: "expense"
+     effect: "NoSchedule"
     
 
 # A pod can be scheduled on a tainted node if it matches node affinity/selector and has the required toleration for the node’s taints.
