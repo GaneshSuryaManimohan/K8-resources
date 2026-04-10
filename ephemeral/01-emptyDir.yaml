@@ -4,7 +4,7 @@ metadata:
   name: filebeat
 data:
   filebeat.yml: |
-  filebeat:
+    filebeat:
       config:
         modules:
           path: /usr/share/filebeat/modules.d/*.yml
